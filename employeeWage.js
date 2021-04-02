@@ -25,6 +25,7 @@ let empHrs = 0;
 let totalEmpHrs = 0;
 let workingDays = 0;
 let empDailyWageArray = new Array();
+let empDailyHrsAndWageArray = new Array();
 let empDailyWageMap = new Map();
 let empDailyHrsMap = new Map();
 while (empHrs <= MAX_HRS_IN_MONTH && workingDays < NUM_OF_WORKING_DAYS) {
@@ -35,7 +36,25 @@ while (empHrs <= MAX_HRS_IN_MONTH && workingDays < NUM_OF_WORKING_DAYS) {
   empDailyWageArray.push(calculateDailyWage(empHrs));
   empDailyWageMap.set(workingDays, calculateDailyWage(empHrs));
   empDailyHrsMap.set(workingDays, empHrs);
+  empDailyHrsAndWageArray.push({
+    dayNum: workingDays,
+    dailyHours: empHrs,
+    dailyWage: calculateDailyWage(empHrs),
+    toString() {
+      return (
+        "\nDay" +
+        this.dayNum +
+        "=> Working hours is " +
+        this.dailyHours +
+        " And wage =" +
+        this.dailyWage
+      );
+    },
+  });
 }
+console.log(
+  "UC 10 showing daily hours worked and wage earned " + empDailyHrsAndWageArray
+);
 let empWage = calculateDailyWage(totalEmpHrs);
 console.log(
   "Employee Wage ",
