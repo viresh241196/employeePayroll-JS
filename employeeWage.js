@@ -52,9 +52,7 @@ while (empHrs <= MAX_HRS_IN_MONTH && workingDays < NUM_OF_WORKING_DAYS) {
     },
   });
 }
-console.log(
-  "UC 10 showing daily hours worked and wage earned " + empDailyHrsAndWageArray
-);
+
 let empWage = calculateDailyWage(totalEmpHrs);
 console.log(
   "Employee Wage ",
@@ -179,3 +177,8 @@ empDailyHrsMap.forEach((value, key) => {
 console.log("Full working day : " + fullWorkingDays);
 console.log("Part working day : " + partWorkingDays);
 console.log("Non working day : " + nonWorkingDays);
+
+//UC10 
+console.log(
+    "UC 10 showing daily hours worked and wage earned " + empDailyHrsAndWageArray
+  );
