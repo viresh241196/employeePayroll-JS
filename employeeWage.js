@@ -25,12 +25,14 @@ let empHrs = 0;
 let totalEmpHrs = 0;
 let workingDays = 0;
 let empDailyWageArray = new Array();
+let empDailyWageMap = new Map();
 while (empHrs <= MAX_HRS_IN_MONTH && workingDays < NUM_OF_WORKING_DAYS) {
   workingDays++;
   let empCheck = Math.floor(Math.random() * 10) % 3;
   empHrs = getWorkingHours(empCheck);
   totalEmpHrs += empHrs;
   empDailyWageArray.push(calculateDailyWage(empHrs));
+  empDailyWageMap.set(workingDays, calculateDailyWage(empHrs));
 }
 let empWage = calculateDailyWage(totalEmpHrs);
 console.log(
@@ -117,4 +119,13 @@ function totalDaysworked(numOfDays, dailyWage) {
 console.log(
   "UC 7G number of days emp worked " +
     empDailyWageArray.reduce(totalDaysworked, 0)
+);
+
+console.log(empDailyWageMap);
+function totalWages(totalWages, dailyWage) {
+  return totalWages + dailyWage;
+}
+console.log(
+  "UC7A - Emp Wage Map totalHrs:" +
+    Array.from(empDailyWageMap.values()).reduce(totalWages, 0)
 );
